@@ -12,8 +12,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// var MONGODB_URI = process.env.MONGODB_URI || " ";
-// mongoose.connect(MONGODB_URI,{  useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user:password1@ds041188.mlab.com:41188/heroku_6l7sd4v9";
+mongoose.connect(MONGODB_URI,{  useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
 
 if (process.env.NODE_ENV === "production") {
