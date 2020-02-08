@@ -1,60 +1,56 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import Form from "../components/Form";
 import Results from "../components/Results";
-
-
+import Form from "../components/Form";
 
 class SearchFunction extends Component {
     //state variables
     state = {
-        search: "",
-        books: [],
-        error: ""
-        };
+        value: "",
+        books: []
+    };
+// run a search as soon as the page loads
 
-    //handling search input
-    handleInputChange = event => {
-        this.setState({ search: event.target.value })
+    componentDidMount() {
+        this.searchBook();
     }
+// create an results object 
 
-    //search form submission
+    bookObject = bookResults => {
+        return {
+            _id: bookResults.id,
+            title: bookResults.volumeInfo.title,
+            authors: bookResults.volumeInfo.authors,
+            description: bookResults.volumeInfo.description,
+            image: bookResults.volumeInfo.imageLinks.thumbnail,
+            link: bookResults.volumeInfo.previewLink
+        }
+    }
+// this is the search function
+
+    searchBook = query => {
+        API.getGoogleResults(query)
+            .then(res => this.setState({ books: res.data.items.map(bookResults => this.bookObject(bookResults)) }))
+            .catch(err => console.error(err));
+    };
+
+    // this targets the input and tells the app what to search for 
+
+    handleInputChange = event => {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            [name]: value
+        });
+    };
+
+// form submit handler
+
     handleFormSubmit = event => {
         event.preventDefault();
-        API.getGoogleResults(this.state.search)
-            .then(res => {
-                if (res.data.items === "error") {
-                    throw new Error(res.data.items);
-                }
-                else {
-                    // store response in a array
-                    let searchResults = res.data.items
-                    
-                    // map through the array 
-                     searchResults = searchResults.map(books => {
-                    //  Create Results Object
-                    books={
-                    _id: searchResults.id,
-                    key: searchResults.id,
-                    title: searchResults.volumeInfo.title,
-                    author: searchResults.volumeInfo.authors,
-                    description: searchResults.volumeInfo.description,
-                    image: searchResults.volumeInfo.imageLinks.thumbnail,
-                    link: searchResults.volumeInfo.previewLink
+        this.searchBook(this.state.search);
+    };
 
-                }
-                return books;
-                    })
-                     this.setState({ books: searchResults, error: "" })
-                }
-            })
-            .catch(err => this.setState({ error: err.items }));
-    }
-
-    // handleSavedButton = event => {
-    //     event.preventDefault();
-    //     <div>Add Saved API</div>
-    // }
     render() {
         return (
             <div>
@@ -70,8 +66,9 @@ class SearchFunction extends Component {
             </div>
         )
     }
-
-
 }
+
+
+
 
 export default SearchFunction
