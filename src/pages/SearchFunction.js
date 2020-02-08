@@ -8,9 +8,8 @@ class SearchFunction extends Component {
     state = {
         search: "",
         books: [],
-        error: "",
-        message: ""
-    };
+        error: ""
+        };
 
     //handling search input
     handleInputChange = event => {
@@ -27,22 +26,33 @@ class SearchFunction extends Component {
                 }
                 else {
                     // store response in a array
-                    let results = res.data.items
-                    console.log(results)
-                    //map through the array 
-                    // results = results.map(result => {
-                    //     // Create Results Object
-                    // })
-                    // this.setState({ books: results, error: "" })
+                    let searchResults = res.data.items
+                    
+                    // map through the array 
+                     searchResults = searchResults.map(books => {
+                    //  Create Results Object
+                    books={
+                    _id: searchResults.id,
+                    key: searchResults.id,
+                    title: searchResults.volumeInfo.title,
+                    author: searchResults.volumeInfo.authors,
+                    description: searchResults.volumeInfo.description,
+                    image: searchResults.volumeInfo.imageLinks.thumbnail,
+                    link: searchResults.volumeInfo.previewLink
+
+                }
+                return books;
+                    })
+                     this.setState({ books: searchResults, error: "" })
                 }
             })
             .catch(err => this.setState({ error: err.items }));
     }
 
-    handleSavedButton = event => {
-        event.preventDefault();
-        <div>Add Saved API</div>
-    }
+    // handleSavedButton = event => {
+    //     event.preventDefault();
+    //     <div>Add Saved API</div>
+    // }
     render() {
         return (
             <div>Add Components</div>
