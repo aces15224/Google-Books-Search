@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+import Form from "../components/Form";
+import Results from "../components/Results";
 
 
 
@@ -55,7 +57,17 @@ class SearchFunction extends Component {
     // }
     render() {
         return (
-            <div>Add Components</div>
+            <div>
+                <Form
+                    search={this.state.search}
+                    handleInputChange={this.handleInputChange}
+                    handleFormSubmit={this.handleFormSubmit}
+                />
+                <div className="container">
+                    <h2>Results</h2>
+                    <Results books={this.state.books} />
+                </div>
+            </div>
         )
     }
 
