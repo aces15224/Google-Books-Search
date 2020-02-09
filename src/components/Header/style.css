@@ -1,3 +1,10 @@
 .jumbotron {
     background-image: url(bookShelf.jpg);
-}
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: auto;
+    overflow-x:hidden;
+    }
+
+   
