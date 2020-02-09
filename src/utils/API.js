@@ -14,7 +14,8 @@ export default {
 
     // deletes specific book w/ specific id
     deleteBook: function (id) {
-        return axios.delete("/api/books/" + id);
+        return axios.delete("/api/books/" + id)
+        .then(result => result.data);
     },
     // saved books
     savedBooks: function () {
