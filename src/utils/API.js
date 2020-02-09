@@ -7,16 +7,18 @@ export default {
     },
 
     // Saves a book to the database
-    saveBook: function (savedBooks) {
-        return axios.post("/books", savedBooks);
+    saveBook: function (bookResults) {
+        return axios.post("/api/books", bookResults)
+        .then(result => result.data)
     },
 
     // Deletes the book with the given id
     deleteBook: function (id) {
-        return axios.delete("/books/" + id);
+        return axios.delete("/api/books/" + id);
     },
-
+    // Route to saved books
     savedBooks: function () {
-        return axios.get("/api/books").then(result => result.data);
+        return axios.get("/api/books")
+        .then(result => result.data);
       }
 }
