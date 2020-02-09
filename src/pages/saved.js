@@ -9,7 +9,7 @@ class Saved extends Component {
 
     componentDidMount() {
         API.savedBooks()
-            .then(res => this.setState({ savedBooks: res.data  }))
+            .then(savedBooks => this.setState({ savedBooks: savedBooks  }))
             .catch(err => console.error(err));
     }
 //     handleDeleteButton = id => {
