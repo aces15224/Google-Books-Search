@@ -9,17 +9,17 @@ export default {
     // save book to database
     saveBook: function (bookResults) {
         return axios.post("/api/books", bookResults)
-        .then(result => result.data)
+//         .then(result => result.data)
     },
 
     // deletes specific book w/ specific id
     deleteBook: function (id) {
         return axios.delete("/api/books/" + id)
-        .then(result => result.data);
+//         .then(result => result.data);
     },
     // saved books
     savedBooks: function () {
         return axios.get("/api/books")
-        .then(result => result.data);
+//         .then(result => result.data);
       }
 };
