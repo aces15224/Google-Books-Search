@@ -6,19 +6,19 @@ export default {
         return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query)
     },
 
-    // Saves a book to the database
+    // save book to database
     saveBook: function (bookResults) {
         return axios.post("/api/books", bookResults)
         .then(result => result.data)
     },
 
-    // Deletes the book with the given id
+    // deletes specific book w/ specific id
     deleteBook: function (id) {
         return axios.delete("/api/books/" + id);
     },
-    // Route to saved books
+    // saved books
     savedBooks: function () {
         return axios.get("/api/books")
         .then(result => result.data);
       }
-}
+};
