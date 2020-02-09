@@ -7,8 +7,6 @@ import Wrapper from "./components/Wrapper";
 import NoResults from "./pages/noResults";
 import Search from "./pages/SearchFunction";
 import Saved from "./pages/saved";
-
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
