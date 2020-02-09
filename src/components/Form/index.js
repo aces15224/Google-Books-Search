@@ -11,7 +11,7 @@ return (
         onChange={props.handleInputChange}
         search={props.search}
         type="text"
-        name="bookSearch"
+        name="search"
         className="form-control"
         placeholder="Enter Book Title Here"
         id="search"
