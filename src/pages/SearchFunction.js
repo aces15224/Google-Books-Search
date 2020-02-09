@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import API from "../utils/API";
 import Results from "../components/Results";
 import Form from "../components/Form";
 
-class SearchFunction extends Component {
+class SearchFunction extends React.Component {
     //state variables
     state = {
         value: "",
