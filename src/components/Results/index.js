@@ -9,7 +9,7 @@ class Results extends Component {
 
     componentDidMount() {
         API.savedBooks()
-            .then(savedBooks => this.setState({ savedBooks: savedBooks }))
+            .then(savedBooks => this.setState({ savedBooks: res.data }))
             .catch(err => console.error(err));
     }
 
