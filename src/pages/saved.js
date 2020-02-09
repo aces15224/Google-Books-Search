@@ -12,11 +12,11 @@ class Saved extends Component {
             .then(res => this.setState({ savedBooks: res.data  }))
             .catch(err => console.error(err));
     }
-    handleDeleteButton = id => {
-        API.deleteBook(id)
-            .then(res => this.componentDidMount())
-            .catch(err => console.log(err))
-    }
+//     handleDeleteButton = id => {
+//         API.deleteBook(id)
+//             .then(res => this.componentDidMount())
+//             .catch(err => console.log(err))
+//     }
 
     render() {
         return (
